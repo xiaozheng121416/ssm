@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--TODO:mabatis核心文件 已经不用所有的配置都可以在Spring核心配置文件中找到里面-->
+<configuration>
+    <!--加载properties文件-->
+    <properties resource="jdbc.properties"></properties>
+
+    <!--定义别名-->
+    <typeAliases>
+        <!--&lt;!&ndash;<typeAlias type="com.itheima.domain.Account" alias="account"></typeAlias>&ndash;&gt;-->
+        <package name="com.itcast.bean"></package>
+    </typeAliases>
+
+    <!--环境-->
+    <environments default="developement">
+        <environment id="developement">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.name}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--加载映射-->
+    <mappers>
+        <!--<package name="com/itcast/mapper/MoneyMapper.xml"></package>-->
+        <mapper resource="com/itcast/mapper/moneyMapper.xml"></mapper>
+    </mappers>
+
+</configuration>
